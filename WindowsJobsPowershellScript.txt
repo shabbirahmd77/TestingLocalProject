@@ -1,0 +1,16 @@
+##Start PowerShell - Run as Administrator
+##Change the path if required and generate CSV
+
+
+##Status Check
+ Get-ScheduledTask |
+ Where State -ne "Disabled" |
+ Select TaskName,TaskPath,State |
+ Export-Csv -NoTypeInformation -Path C:\output1.csv
+
+##Schedule and Runs Check 
+Get-ScheduledTask |
+Where State -ne "Disabled" |
+Get-ScheduledTaskInfo |
+Select TaskName,TaskPath,LastRunTime, LastTaskResult,NextRunTime,NumberofMissedRuns |
+Export-Csv -NoTypeInformation -Path C:\output2.csv
